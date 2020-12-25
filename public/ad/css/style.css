@@ -1,0 +1,7 @@
+.validateError {
+    color: #e74a3a;
+}
+.custom-file-control:before{
+    text-overflow:ellipsis
+}
+

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\registerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [registerController::class, 'index']);
+Route::post('/register', [registerController::class, 'create']);
+
+Route::get('/qlhoso', [registerController::class, 'store']);
+Route::post('/search', [registerController::class, 'show']);
