@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\register;
 
+
 class registerController extends Controller
 {
     /**
@@ -62,8 +63,10 @@ class registerController extends Controller
     {
         
         $textseach = request('data');
-        $serchs = register::FullTextSearch($textseach)->get();
-        dd($serchs);
+        $serchs = register::query()->where('name', 'like', '%'.$textseach.'%')
+        ->orwhere('email', 'like', '%'.$textseach.'%')
+        ->orwhere('phone', 'like', '%'.$textseach.'%')->get();;
+         echo (string)$serchs;
     }
 
     /**

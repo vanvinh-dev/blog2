@@ -57,7 +57,7 @@
                   <th>Hồ sơ chi tiết</th>
                 </tr>
               </thead>
-              <tbody style="    text-align: center;">
+              <tbody style="text-align: center;" id="bodydata">
                 <?php $stt=0; foreach($info as $item): $stt++?>
                     <tr>
                         <th scope="row">{{$stt}}</th>
@@ -69,8 +69,6 @@
                         <td><a href="/upload/{{$item['file']}}" ><i class="fa fa-download"></i></a></td>
     
                     </tr>
-                    <tr>
-                    
                 <?php endforeach ?>
               </tbody>
               </tbody>
@@ -99,9 +97,32 @@
                         data:data.value
                     },
                     success:function(data){
-                           
+                           if(data.length > 0){
+                            drawTable(JSON.parse(data))
+                           }else{
+                             document.getElementById('bodydata').innerHTML =''
+                           }
                     }
             })
+        }
+        const drawTable = (data) =>{
+          console.log(data)
+          document.getElementById('bodydata').innerHTML =''
+          data.forEach((item,index)=>{
+          document.getElementById('bodydata').innerHTML +=
+          `
+            <tr>
+                        <th scope="row">${index}</th>
+                        <td>${item.name}</td>
+                        <td>${item.email}</td>
+                        <td>${item.phone}</td>
+                        <td>A1</td>
+                        <td><img src="/upload/${item.arvata}" style="border-radius: 10px;max-height: 106px;"></td>
+                        <td><a href="/upload/${item.item}" ><i class="fa fa-download"></i></a></td>
+    
+                    </tr>
+          `
+           })
         }
     </script>   
 </body>
