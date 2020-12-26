@@ -20,3 +20,5 @@ Route::post('/register', [registerController::class, 'create']);
 
 Route::get('/qlhoso', [registerController::class, 'store']);
 Route::post('/search', [registerController::class, 'show']);
+Route::get('/printdocx/{id}', [registerController::class, 'process']);
+Route::get('/testdoct', [registerController::class, 'testdocts']);

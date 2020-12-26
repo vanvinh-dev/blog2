@@ -55,6 +55,7 @@
                   <th>Loại bằng</th>
                   <th>ảnh</th>
                   <th>Hồ sơ chi tiết</th>
+                  <th>In thông tin</th>
                 </tr>
               </thead>
               <tbody style="text-align: center;" id="bodydata">
@@ -67,6 +68,7 @@
                         <td>A1</td>
                         <td><img src="/upload/{{$item['arvata']}}" style="border-radius: 10px;max-height: 106px;"></td>
                         <td><a href="/upload/{{$item['file']}}" ><i class="fa fa-download"></i></a></td>
+                        <td><a href="/printdocx/{{$item['id']}}" style="font-size: 17px;color: #1b1919;"><i class="fa fa-print"></i></a></td>
     
                     </tr>
                 <?php endforeach ?>
@@ -119,6 +121,7 @@
                         <td>A1</td>
                         <td><img src="/upload/${item.arvata}" style="border-radius: 10px;max-height: 106px;"></td>
                         <td><a href="/upload/${item.item}" ><i class="fa fa-download"></i></a></td>
+                        <td><a href="/printdocx/${item.id}" style="font-size: 17px;color: #1b1919;"><i class="fa fa-print"></i></a></td>
     
                     </tr>
           `
