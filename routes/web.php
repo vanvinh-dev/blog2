@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\zoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::get('/qlhoso', [registerController::class, 'store']);
 Route::post('/search', [registerController::class, 'show']);
 Route::get('/printdocx/{id}', [registerController::class, 'process']);
 Route::get('/testdoct', [registerController::class, 'testdocts']);
+Route::get('/zoom', [zoomController::class, 'index']);
+Route::get('/qlzoom', [zoomController::class, 'show']);
