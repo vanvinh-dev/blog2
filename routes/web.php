@@ -25,3 +25,5 @@ Route::get('/printdocx/{id}', [registerController::class, 'process']);
 Route::get('/testdoct', [registerController::class, 'testdocts']);
 Route::get('/zoom', [zoomController::class, 'index']);
 Route::get('/qlzoom', [zoomController::class, 'show']);
+Route::get('/datazoom', [zoomController::class, 'datazoom']);
+Route::post('/createzoom', [zoomController::class, 'create']);

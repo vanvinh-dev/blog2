@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\register;
+use App\Models\zoom;
 class zoomController extends Controller
 {
     /**
@@ -20,15 +21,22 @@ class zoomController extends Controller
     {
         return view('qlzoom');
     }
+    public function datazoom()
+    {
+        $zoom = zoom::all()->leftJoin('posts', 'users.id', '=', 'posts.user_id');
+        echo (string)$zoom;
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $re)
     {
-        //
+        $arrToSend = request('data');
+        zoom::insert($arrToSend);
+        return redirect('/qlzoom');
     }
 
     /**

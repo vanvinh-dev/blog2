@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Badge - Voler Admin Dashboard</title>
     <link href="{{ asset("bootstrap-datepicker.css")}}" rel="stylesheet" type="text/css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
       @include('include.css')
    <style>
    .datepicker {
@@ -195,13 +196,36 @@ thead tr:nth-child(3) th {
           let adress = document.getElementById('adress')
           let date = document.getElementById('date')
           let mem = [];
+          let arr = []
           let data = document.getElementsByClassName("form-check-input")
             for (var i = 0; data[i]; ++i) {
                 if (data[i].checked) {
-                    mem.push(data[i].value);
+                    let obj = {
+                        name:name.value,
+                        code:code.value,
+                        quanlity:quanlity.value,
+                        adress:adress.value,
+                        date:date.value,
+                        member:data[i].value,
+                        status:"active"
+                    }
+                    arr.push(obj);
                 }
             }
-        console.log(name,code,quanlity,adress,date,mem)
+            $.ajax({
+            type: 'post',
+             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: '/createzoom',
+            data: {
+                data:arr
+            },
+            success: function (ret) {
+              if(ret){
+                  $('#exampleModal').modal('toggle');
+                  alert('Công văn đã được chuyển đi!')
+              }
+            }
+          });
       }
      </script>
 
