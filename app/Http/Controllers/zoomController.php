@@ -23,7 +23,7 @@ class zoomController extends Controller
     }
     public function datazoom()
     {
-        $zoom = zoom::all()->leftJoin('posts', 'users.id', '=', 'posts.user_id');
+        $zoom = zoom::all()->leftJoin('registers', 'users.id', '=', 'posts.user_id');
         echo (string)$zoom;
     }
 

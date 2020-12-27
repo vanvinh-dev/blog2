@@ -92,7 +92,7 @@
                                                     <div class="widget-todo-item-action d-flex align-items-center">
                                                         <div class="badge badge-pill badge-light-success mr-1">frontend</div>
                                                         <div class="avatar bg-warning ">
-                                                            <img src="/upload/${e,}" alt="" srcset="">
+                                                            <img src="/upload/${e}" alt="" srcset="">
                                                         </div>
                                                         <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
                                                     </div>
