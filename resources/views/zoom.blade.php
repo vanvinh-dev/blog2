@@ -222,7 +222,7 @@ thead tr:nth-child(3) th {
             success: function (ret) {
               if(ret){
                   $('#exampleModal').modal('toggle');
-                  alert('Công văn đã được chuyển đi!')
+                  alert('Tạo phòng thi thành công!')
               }
             }
           });

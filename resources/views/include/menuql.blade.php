@@ -27,7 +27,7 @@
 
                         </li>
                 <li class="sidebar-item active">
-                    <a href="zoom" class='sidebar-link'>
+                    <a href="violate" class='sidebar-link'>
                         <i data-feather="briefcase" width="20"></i> 
                         <span>Xử lý vi phạm</span>
                     </a>

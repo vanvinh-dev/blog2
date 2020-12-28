@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\vipham;
 use Illuminate\Http\Request;
-use App\Models\register;
-use App\Models\zoom;
-use Illuminate\Support\Facades\DB;
-class zoomController extends Controller
+
+class viphamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,40 +13,7 @@ class zoomController extends Controller
      */
     public function index()
     {
-        $member = register::all()->toArray();
-        return view('zoom')->with('member',$member);
-    }
-    public function show()
-    {
-        return view('qlzoom');
-    }
-    public function violate()
-    {
-        return view('violate')->with('info','' );;
-    }
-    public function searchZoom(Request $request)
-    {
-         
-        $textseach = request('data');
-        $serchs = DB::table('zooms')
-        ->join('registers', function($join)
-        {
-                $join->on('zooms.member', '=', 'registers.id');
-        })
-        ->where('zooms.name', 'like', '%'.$textseach.'%')
-        ->orwhere('zooms.code', 'like', '%'.$textseach.'%')
-        ->orwhere('zooms.adress', 'like', '%'.$textseach.'%')
-        ->get();
-         echo (string)$serchs;
-        
-    }
-    public function datazoom()
-    {
-        //    $zoom = zoom::all();
-        $zoom = DB::table('zooms')
-        ->rightJoin('registers', 'registers.id', '=', 'zooms.member')
-        ->get();
-        echo (string)$zoom;
+        //
     }
 
     /**
@@ -56,11 +21,18 @@ class zoomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $re)
+    public function create(Request $request)
     {
-        $arrToSend = request('data');
-        zoom::insert($arrToSend);
-        return redirect('/qlzoom');
+       $viphams  = new vipham();
+       $viphams->member = $request->member;
+       $viphams->date = $request->date;
+       $viphams->thu = $request->thu;
+       $viphams->adress = $request->adress;
+       $viphams->content = $request->content;
+       $viphams->applicant = $request->applicant;
+       $viphams->status = 'pendding';
+       $viphams->save();
+       return view('violate')->with('info','Lập biên bản thành công!' );
     }
 
     /**
@@ -80,7 +52,10 @@ class zoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
+    public function show($id)
+    {
+        //
+    }
 
     /**
      * Show the form for editing the specified resource.
